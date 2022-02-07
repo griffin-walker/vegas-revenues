@@ -1,0 +1,14 @@
+name: vegas-revenues
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - camelot-py
+  - pip
+  - pip:
+    - pandas
+    - requests
+    - ipykernel
+    - pre-commit
+    - black
