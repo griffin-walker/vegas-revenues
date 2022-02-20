@@ -1,6 +1,8 @@
 # vegas-revenues
 Grabbing and cleaning revenue data published by the Nevada Gaming Control Board
 
+Code for https://unstructur3d.substack.com/p/what-do-vegas-casinos-make-in-a-month
+
 ### What's Here
 
 - `environment.yml` : conda environment with necessary python dependencies. R not included here.
