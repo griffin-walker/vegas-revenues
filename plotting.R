@@ -7,7 +7,7 @@ library(kableExtra)
 library(scales)
 
 
-data_path = "vegas-revenues-total.csv"
+data_path = "cleaned_vegas_revenues.csv"
 # load data from vegas-revenues python code
 df <- read.csv(data_path)
 # create/ convert some date cols
