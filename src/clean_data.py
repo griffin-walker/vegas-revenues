@@ -150,7 +150,6 @@ def clean_month(month_str: str):
     Ex. JUN -> 6
     """
     month_name, year = month_str.split("_")
-    print(month_name, year)
     month_num = datetime.datetime.strptime(month_name[0:3], "%b").month
     return year + str(month_num).zfill(2)
 
@@ -177,6 +176,14 @@ def create_df(clean_records):
     df["year_month"] = df["year"] + "/" + df["month"]  # helpful for R
     return df
 
+def data_qa(df):
+    """Randomly assert values match those in the original pdfs."""
+    assert (df[df['year_month'] == "2008/04"]['tables_twenty_one']).item() == 92_460_000
+    assert (df[df['year_month'] == "2007/02"]['slots_100_dollar']).item() == 3_510_000
+    assert (df[df['year_month'] == "2020/04"]['tables_total']).item() == 0
+    assert (df[df['year_month'] == "2011/06"]['tables_baccarat']).item() == 107_194_000
+    assert (df[df['year_month'] == "2019/09"]['slots_1_dollar']).item() == 29_544_000
+
 
 def main():
     month_tables = load_tables()
@@ -188,6 +195,7 @@ def main():
     print("Data cleaned.")
     df = create_df(clean_records)
     outfile_name = "cleaned_vegas_revenues.csv"
+    data_qa(df)
     df.to_csv(outfile_name, index=None)
     print(f"Written to {outfile_name}")
 
